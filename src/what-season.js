@@ -12,6 +12,7 @@ const { NotImplementedError } = require('../extensions/index.js');
  * 
  */
 
+
 function getSeason(date) {
 
   let month;
@@ -24,9 +25,10 @@ function getSeason(date) {
 
   
  
-  if (Object.prototype.toString.call(date) === "[object Date]" && date instanceof Date ) {
+  console.log(date.hasOwnProperty('toString'));// gives true for fakedates, can use for checking
+  
+  if ((Object.prototype.toString.call(date) === "[object Date]") && ( date instanceof Date ) && (typeof date[Symbol.toStringTag] !== 'string')) {
     if (isNaN(date) || ( date.getFullYear() === newDate.getFullYear())) { 
- 
       throw  new Error("Invalid date!");
     } else {
       month = date.getUTCMonth();
@@ -58,6 +60,7 @@ function getSeason(date) {
   }
    return str;
 }
+
 
 module.exports = {
   getSeason

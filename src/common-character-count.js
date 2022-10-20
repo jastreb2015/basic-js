@@ -26,8 +26,6 @@ let re = new RegExp(rep);
  return count;
 }
 
-
-
 module.exports = {
   getCommonCharacterCount
 };
